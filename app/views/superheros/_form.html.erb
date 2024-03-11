@@ -1,0 +1,7 @@
+<%= simple_form_for [@superhero] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :team %>
+  <%= f.input :image_url %>
+  <%= f.input :address %>
+  <%= f.button :submit, "Add a new superhero", class: "btn btn-primary" %>
+<% end %>
