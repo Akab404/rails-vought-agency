@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :superheros do
     resources :bookings, only: [:new, :create ]
+    resources :reviews, only: [:new, :create]
   end
 
   get "/users/account", to: "pages#account"
