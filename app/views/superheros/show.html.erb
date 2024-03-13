@@ -18,7 +18,11 @@
   <%= simple_form_for [@superhero, @booking] do |f| %>
     <%= f.input :checkin %>
     <%= f.input :checkout %>
-    <%= f.submit %>
+    <% if user_signed_in? %>
+      <%= f.button :submit, class: "btn btn-primary"  %>
+    <% else %>
+       <%= link_to "Create booking", new_user_session_path, class: "btn btn-primary" %>
+    <% end %>
   <% end %>
 
 
