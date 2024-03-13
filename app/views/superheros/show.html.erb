@@ -18,7 +18,13 @@
   <%= simple_form_for [@superhero, @booking] do |f| %>
     <%= f.input :checkin %>
     <%= f.input :checkout %>
-    <%= f.submit %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>
+
+  <%= simple_form_for [@superhero, @review] do |f| %>
+  <%= f.input :comment %>
+  <%= f.input :rating %>
+  <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
 
 
