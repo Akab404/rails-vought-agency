@@ -1,7 +1,18 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background-color: #01051b;
+  background-color: #161a23;
   position: fixed;
+  border-right: solid $tertiary;
+  border-radius: $border-radius;
+  height: 100vh;
+}
+
+.haut {
+  padding-bottom: 510px;
+}
+
+.col-2 {
+  padding-left: 0 !important;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,7 +20,7 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 170px;
 }
 
 .container-fluid {
@@ -19,5 +30,5 @@
 }
 
 .nav-link {
-  color: white;
+  color: $secondary;
 }
