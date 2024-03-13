@@ -1,8 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background-color: #01051b;
   position: fixed;
-  width: 12%;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -17,4 +16,8 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+}
+
+.nav-link {
+  color: white;
 }
