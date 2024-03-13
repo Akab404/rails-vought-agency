@@ -1,1 +1,29 @@
 <h1><%= @user.email %></h1>
+
+<h1>Mes superheros</h1>
+<ul>
+  <% @user.superheros.each do |superhero| %>
+    <li class="list-group-item mt-3">
+        <%= link_to superhero_path(superhero) do %>
+          <%= superhero.name %>
+        <% end %>
+        <%= link_to superhero_path(superhero),
+                    class:"trash-btn",
+                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  do %>
+        <i class="fa-solid fa-trash"  id="delete-ico"></i>
+        <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<h1>Les bookings de mes superheros</h1>
+<ul>
+  <% @user.bookings.each do |booking| %>
+    <li>
+      <%= booking.superhero.name %> is booked
+    </li>
+    <li>
+       From <%= booking.checkin %> to <%= booking.checkout %>
+    </li>
+  <% end %>
+</ul>
