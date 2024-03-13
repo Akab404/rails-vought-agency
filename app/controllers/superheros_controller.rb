@@ -10,6 +10,8 @@ class SuperherosController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
+    @booking.superhero = @superhero
   end
 
   def create
@@ -32,7 +34,8 @@ class SuperherosController < ApplicationController
 
   def destroy
     @superhero.destroy
-    redirect_to superhero_path(@superhero), status: :see_other
+    redirect_to superheros_path, status: :see_other
+    flash[:alert] = "Vous avez bien supprimé #{@superhero.name}"
   end
 
   private

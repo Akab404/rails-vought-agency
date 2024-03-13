@@ -1,11 +1,17 @@
 <h1><%= @user.email %></h1>
 
 <h1>Mes superheros</h1>
+<%= link_to new_superhero_path,  class:"btn btn-primary mt-3"  do %>
+  <i class="fa-solid fa-plus"></i> Add a new superhero
+<% end %>
 <ul>
   <% @user.superheros.each do |superhero| %>
     <li class="list-group-item mt-3">
         <%= link_to superhero_path(superhero) do %>
           <%= superhero.name %>
+        <% end %>
+        <%= link_to edit_superhero_path(superhero) do %>
+          <span class="span-edit">Edit</span>
         <% end %>
         <%= link_to superhero_path(superhero),
                     class:"trash-btn",

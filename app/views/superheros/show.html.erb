@@ -1,5 +1,25 @@
 <div class="container">
   <h1><%= @superhero.name %></h1>
-<p><%= @superhero.team %></p>
-<img src="<%= @superhero.image_url %>" alt="superhero">
+  <p><%= @superhero.team %></p>
+  <img src="<%= @superhero.image_url %>" alt="superhero">
+
+  <% if @superhero.user == current_user %>
+  <%= link_to edit_superhero_path(@superhero) do %>
+            <span class="span-edit">Edit</span>
+          <% end %>
+          <%= link_to superhero_path(@superhero),
+                      class:"trash-btn",
+                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  do %>
+          <i class="fa-solid fa-trash"  id="delete-ico"></i>
+          <% end %>
+  <% end%>
+
+
+  <%= simple_form_for [@superhero, @booking] do |f| %>
+    <%= f.input :checkin %>
+    <%= f.input :checkout %>
+    <%= f.submit %>
+  <% end %>
+
+
 </div>
