@@ -16,8 +16,12 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.superhero = @superhero
     @booking.user = current_user
-    @booking.save!
-    redirect_to root_path
+    if @booking.save!
+      redirect_to superhero_path(@superhero)
+      flash[:alert] = "Vous avez bien reservé #{@superhero.name}"
+    else
+      render 'superheros/show', status: :unprocessable_entity
+    end
   end
 
 end
