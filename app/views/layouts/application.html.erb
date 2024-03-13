@@ -10,10 +10,16 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-     <%= render "layouts/navbar" %>
-    <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <body class="container-fluid">
+    <div class="row">
+      <div class="col-2">
+        <%= render "layouts/navbar" %>
+      </div>
+      <div class="col-10">
+        <%= yield %>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+    </div>
   </body>
 </html>
