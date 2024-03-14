@@ -1,51 +1,59 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon col-2">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="p-2 d-flex align-items-start flex-column" id="sidebar-global">
 
-  <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand py-5 border-bottom" do %>
-     <%= cl_image_tag("n9xfsyr3qprnjpwav77i") %>
-    <% end %>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-      <div class="test">
-      <div class="haut">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to root_path, class: "nav-link" do %>
-            <i class="fa-solid fa-house"></i> Accueil
-            <% end  %>
-          </li>
-
-          <li class="nav-item">
-            <%= link_to users_account_path, class: "nav-link" do%>
-            <i class="fa-regular fa-circle-user"></i> Compte
-            <% end  %>
-          </li>
-           <li class="nav-item active">
-            <%= link_to users_account_path, class: "nav-link" do %>
-            <i class="fa-regular fa-bell"></i> Notification
-            <% end %>
-          </li>
-          </div>
-          <div class="bas py-5 border-top ">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-              <%=link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" do%>
-              <i class="fa-solid fa-arrow-right-from-bracket"></i> Log out
-              <% end  %>
-          </a>
-          </div>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-        </div>
-      </ul>
+    <div class="sidebar-logo">
+     <%= link_to root_path, class: "navbar-brand py-5 border-bottom" do %>
+            <%= cl_image_tag("n9xfsyr3qprnjpwav77i") %>
+          <% end %>
     </div>
-  </div>
+
+
+
+
+    <div class="icone p-2">
+      <div class="collapse navbar-collapse p-2" id="navbarSupportedContent">
+
+        <ul class="navbar-nav me-auto">
+          <% if user_signed_in? %>
+            <div class="sidebar-menu">
+              <li class="nav-item active">
+                <p>MENU</p>
+                <%= link_to root_path, class: "nav-link" do %>
+                  <i class="fa-solid fa-house"></i> Accueil
+                <% end  %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to users_account_path, class: "nav-link" do%>
+                  <i class="fa-regular fa-circle-user"></i> Compte
+                <% end  %>
+              </li>
+
+              <li class="nav-item active">
+                <%= link_to users_account_path, class: "nav-link" do %>
+                  <i class="fa-regular fa-bell"></i> Notification
+                <% end %>
+              </li>
+
+            </div>
+
+      </div>
+
+          <div class="py-5 border-top mt-auto p-2 ">
+            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+              <%=link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" do%>
+                <i class="fa-solid fa-arrow-right-from-bracket  pt-4"></i> Log out
+              <% end  %>
+            </a>
+          </div>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
+
+    </div>
+</div>
 </div>
