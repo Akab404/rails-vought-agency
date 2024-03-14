@@ -45,4 +45,12 @@ p {
   height: 100%;
   display: flex;
   flex-direction: column;
+  width:100%;
 }
+.small-txt{
+      font-size: small;
+}
+.profil-area p{
+  margin:0;
+}
+.logout{color:$red; text-align: center;margin-top: 30px;}
