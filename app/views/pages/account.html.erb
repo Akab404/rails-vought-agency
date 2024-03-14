@@ -22,7 +22,7 @@
   <% end %>
 </ul>
 
-<h1>Les bookings de mes superheros</h1>
+<h1>Mes bookings de superheros</h1>
 <ul>
   <% @user.bookings.each do |booking| %>
     <li>
@@ -32,4 +32,24 @@
        From <%= booking.checkin %> to <%= booking.checkout %>
     </li>
   <% end %>
+</ul>
+
+
+<h1>Les bookings de mes superheros</h1>
+<ul>
+
+    <% @user.superheros.each do |superhero| %>
+      <% if superhero.bookings.any? %>
+      <li>
+        <%= superhero.name %> is booked
+      </li>
+      <% end  %>
+      <% superhero.bookings.each do |booking| %>
+        <li>
+          From <%= booking.checkin %> to <%= booking.checkout %>
+          by <%= booking.user.email %>
+        </li>
+      <% end %>
+    <% end %>
+
 </ul>
