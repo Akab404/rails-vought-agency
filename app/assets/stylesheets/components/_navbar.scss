@@ -11,10 +11,9 @@ p {
   font-size: small;
   color: $secondary;
 }
-
-.haut {
-  padding-bottom: 510px;
-}
+// .haut {
+//   padding-bottom: 510px;
+// }
 
 .col-2 {
   padding-left: 0 !important;
@@ -42,7 +41,7 @@ p {
   height: 100%;
 }
 
-#navbarSupportedContent {
+.icone {
   height: 100%;
   display: flex;
   flex-direction: column;
