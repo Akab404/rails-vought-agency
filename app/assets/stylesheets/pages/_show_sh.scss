@@ -1,0 +1,21 @@
+.hero-show-sh{
+  height: 296px;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url("https://static.hitek.fr/img/actualite/2017/05/11/fb_cad7kj.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.col-10{
+  padding-left:0;
+}
+
+.booking-area{
+  width:100%;
+  background-color:$gray;
+  position:sticky;
+  top:24px;
+}
+.booking-area .price span{
+  font-size: 27px;
+  font-weight: 700;
+}
+form label{margin-top:24px;}
