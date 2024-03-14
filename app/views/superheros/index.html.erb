@@ -5,6 +5,7 @@
     <% @superheros.each do |superhero| %>
       <li class="list-group-item mt-3">
             <%= link_to superhero_path(superhero) do %>
+              <img src=<%= superhero.image_url %> alt=<%= superhero.name %>>
               <%= superhero.name %>
             <% end %>
       </li>

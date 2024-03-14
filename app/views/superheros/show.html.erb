@@ -21,6 +21,14 @@
     <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
 
+  <ul>
+    <% @superhero.reviews.each do |review| %>
+      <li><%= review.comment %></li>
+    <% end %>
+  </ul>
+
+
+
   <%= simple_form_for [@superhero, @review] do |f| %>
   <%= f.input :comment %>
   <%= f.input :rating %>
