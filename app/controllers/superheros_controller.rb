@@ -3,6 +3,9 @@ class SuperherosController < ApplicationController
 
   def index
     @superheros = Superhero.all
+    if params[:query]
+      @superheros = @superheros.search_by_name_and_team(params[:query])
+    end
   end
 
   def new
@@ -45,6 +48,6 @@ class SuperherosController < ApplicationController
   end
 
   def superhero_params
-    params.require(:superhero).permit(:name, :team, :image_url, :address)
+    params.require(:superhero).permit(:name, :team, :image_url, :address, :coverimage, :category, :booktitle, :description)
   end
 end

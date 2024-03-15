@@ -1,29 +1,45 @@
+  <div class="row justify-content-center search-area">
+    <h1 class="text-center w-100 mt-5">Looking for a <span class="bolder">Superhero</span> ?</h1>
+    <div class="col-sm-8">
+      <%= form_with url: superheros_path, method: :get, class: "d-flex search-form" do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control p-3",
+              placeholder: "Type a keyword"
+          %>
+          <i class="fa-solid fa-magnifying-glass search-loupe"></i>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary d-none" %>
+      <% end %>
+    </div>
+    </div>
 <div class="container">
-  <h1 class="fs-1"> Index Superheros</h1>
+  <div class="btn btn-outline-light px-4 py-2 sh-filtres"><i class="fa-solid fa-sliders"></i> Filtres</div>
 
-  <ul class="d-flex flex-row flex-wrap">
-    <% @superheros.each do |superhero| %>
-      <li class="border rounded mt-3">
-       <%= link_to superhero_path(superhero) do %>
-        <img class="banner_superhero" src=<%= superhero.image_url %> alt=<%= superhero.name %>>
-         <div class="position-relative">
-          <img class="logo_marvel rounded-circle" src="https://tse3.mm.bing.net/th?id=OIP.bxbNzr2ihmPnVrGzBOZiJgHaHa&pid=Api&P=0&h=180" alt="">
+  <ul class="d-flex flex-row flex-wrap gap-3">
+    <div class="row justify-content-between">
+      <% @superheros.each do |superhero| %>
+        <li class="border rounded sh-card col-2 mx-2 my-4">
+        <%= link_to superhero_path(superhero) do %>
+          <img class="banner_superhero rounded-top" src=<%= superhero.image_url %> alt=<%= superhero.name %>>
+          <div class="position-relative">
+            <img class="logo_marvel rounded-circle" src="https://tse3.mm.bing.net/th?id=OIP.bxbNzr2ihmPnVrGzBOZiJgHaHa&pid=Api&P=0&h=180" alt="">
 
-           <div class="info_superhero">
-            <h1><%= superhero.name %></h1>
-             <p>pilote accompli / excellent tireur</p>
+            <div class="info_superhero">
+              <h1><%= superhero.name %></h1>
+              <p><%= superhero.category %></p>
 
-            <div class= "d-flex">
-              <i class="fa-solid fa-location-pin"></i>
-              <h3>paris</h3>
+              <div class= "d-flex align-items-center sh-geoloc">
+                <i class="fa-solid fa-location-pin"></i>
+                <span class="ms-2"><%= superhero.address %></span>
+              </div>
+
             </div>
 
           </div>
-
-        </div>
-       <% end %>
-      </li>
-    <% end %>
+        <% end %>
+        </li>
+      <% end %>
+    </div>
   </ul>
 
 

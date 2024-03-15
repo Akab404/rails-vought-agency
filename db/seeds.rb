@@ -12,11 +12,22 @@ require "open-uri"
 
 # user_seed = User.new(email: "anthins.errt@gmail.com", password: "azerty")
 # user_seed.save!
+  CATEGORY = ["Mangeur de bananes", "Tireur d'exception", "Homme en slip", "Créature chelou", "Développeur full stack"]
 
 url = "https://akabab.github.io/superhero-api/api/all.json"
 heroes = URI.open(url).read
 hero = JSON.parse(heroes)
 
 hero.each do |h|
-  Superhero.create!(name: h["name"], team: h["biography"]["publisher"], image_url: h["images"]["md"], user_id: "1")
+  Superhero.create!(
+    name: h["name"],
+    team: h["biography"]["publisher"],
+    image_url: h["images"]["md"],
+    category: CATEGORY.sample,
+    user_id: "1",
+    booktitle: h["work"]["occupation"],
+    coverimage: h["images"]["lg"],
+    description: h["connections"]["relatives"],
+    address: h["biography"]["placeOfBirth"]
+  )
 end

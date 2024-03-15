@@ -1,2 +1,8 @@
 // Specific CSS for your home-page
 .col-2 {padding-left:0 !important}
+.col-10 > .container ul{padding-left:0;}
+.search-area{height:255px;background-image: url("https://res.cloudinary.com/dzxq31pa6/image/upload/v1710257099/mtxtfqroopvz98xda9nn.png");width:100%;background-size: cover;}
+.sh-filtres{margin:24px 0;}
+.search-loupe{position:absolute; right:24px;; bottom:20px;color:$light-gray;}
+.search-form{position:relative;}
+.container-content{margin:auto;}

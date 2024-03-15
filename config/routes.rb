@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   patch "bookings/:id/accept", to: "bookings#accept", as: "accept"
-  patch "bookings/:id/decline", to: "bookings#accept", as: "decline"
+  patch "bookings/:id/decline", to: "bookings#decline", as: "decline"
 
 
   get "/users/account", to: "pages#account"

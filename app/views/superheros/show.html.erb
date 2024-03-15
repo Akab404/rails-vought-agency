@@ -1,7 +1,7 @@
-<div class="hero-show-sh d-flex flex-column justify-content-end py-5">
+<div class="hero-show-sh d-flex flex-column justify-content-end py-5" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('<%= @superhero.coverimage %>');">
   <div class="container">
     <h1><%= @superhero.name %></h1>
-    <h3>Aventurier / Pilote accompli / Excellent tireur</h3>
+    <h3>// <%= @superhero.category %></h3>
     <p><%= @superhero.team %></p>
   </div>
 </div>
@@ -23,9 +23,9 @@
         <% end %>
       <% end%>
 
-      <h1 class="mt-2">Jeune aventurier poilu, armé de laser et de vaiseaux spatials</h1>
-      <p>Sed ornare dignissim gravida. Donec rutrum turpis nec porttitor vestibulum. Vestibulum a sem molestie, pharetra enim nec, rutrum odio. Cras eu blandit ante. Donec eget leo a dui facilisis tempor. Curabitur ac libero vel ligula facilisis varius vel sagittis felis. Praesent egestas eget arcu eu imperdiet. Etiam tincidunt gravida ligula non lobortis. Ut erat orci, sodales ut ullamcorper ut, convallis quis justo. Fusce tempus libero tempor ex vulputate hendrerit. Praesent lobortis posuere aliquam.</p>
-      <img src="<%= @superhero.image_url %>" alt="superhero">
+      <h1 class="mt-2"><%= @superhero.booktitle %></h1>
+      <p><%= @superhero.description %></p>
+      <img src="<%= @superhero.image_url %>" alt="superhero" style="max-width:80%;">
 
       <% if @superhero.reviews.any? %>
         <hr>
@@ -60,7 +60,7 @@
           <p class="text-center">Aucun montant ne vous sera débité pour le moment</p>
           <%= f.button :submit, class: "btn btn-primary w-100 py-3", label: "Réserver ce super héro" %>
         <% end %>
-        <div class="total-price border-top mt-3 p-1 text-end" data-totalprice-target="totalPrice"></div>
+        <div class="total-price border-top mt-3 pt-3 text-end" data-totalprice-target="totalPrice"></div>
       </div>
     </div>
   </div>
