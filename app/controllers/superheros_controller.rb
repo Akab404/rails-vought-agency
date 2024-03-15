@@ -11,7 +11,6 @@ class SuperherosController < ApplicationController
 
   def show
     @booking = Booking.new
-    @booking.superhero = @superhero
     @review = Review.new
   end
 

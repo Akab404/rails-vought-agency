@@ -10,13 +10,13 @@
 require "json"
 require "open-uri"
 
-user_seed = User.new(email: "anthins.errt@gmail.com", password: "azerty")
-user_seed.save!
+# user_seed = User.new(email: "anthins.errt@gmail.com", password: "azerty")
+# user_seed.save!
 
 url = "https://akabab.github.io/superhero-api/api/all.json"
 heroes = URI.open(url).read
 hero = JSON.parse(heroes)
 
 hero.each do |h|
-  Superhero.create!(name: h["name"], team: h["biography"]["publisher"], image_url: h["images"]["md"], user_id: user_seed.id)
+  Superhero.create!(name: h["name"], team: h["biography"]["publisher"], image_url: h["images"]["md"], user_id: "1")
 end

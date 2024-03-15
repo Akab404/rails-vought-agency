@@ -29,5 +29,5 @@ end
 private
 
 def booking_params
-  params.require(:booking).permit(:superhero_id, :checkin, :checkout)
+  params.require(:booking).permit(:checkin, :checkout)
 end

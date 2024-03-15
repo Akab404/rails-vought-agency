@@ -1,31 +1,67 @@
+<div class="hero-show-sh d-flex flex-column justify-content-end py-5">
+  <div class="container">
+    <h1><%= @superhero.name %></h1>
+    <h3>Aventurier / Pilote accompli / Excellent tireur</h3>
+    <p><%= @superhero.team %></p>
+  </div>
+</div>
+
+
 <div class="container">
-  <h1><%= @superhero.name %></h1>
-  <p><%= @superhero.team %></p>
-  <img src="<%= @superhero.image_url %>" alt="superhero">
+  <div class="row mt-5">
+    <div class="col-8">
 
-  <% if @superhero.user == current_user %>
-  <%= link_to edit_superhero_path(@superhero) do %>
-            <span class="span-edit">Edit</span>
+      <% if @superhero.user == current_user %>
+        <%= link_to edit_superhero_path(@superhero), class:"btn btn-outline-primary" do %>
+          <span>Edit</span>
+        <% end %>
+
+        <%= link_to superhero_path(@superhero),
+                    class:"btn btn-outline-primary ms-2",
+                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  do %>
+          <span>Delete</span>
+        <% end %>
+      <% end%>
+
+      <h1 class="mt-2">Jeune aventurier poilu, armé de laser et de vaiseaux spatials</h1>
+      <p>Sed ornare dignissim gravida. Donec rutrum turpis nec porttitor vestibulum. Vestibulum a sem molestie, pharetra enim nec, rutrum odio. Cras eu blandit ante. Donec eget leo a dui facilisis tempor. Curabitur ac libero vel ligula facilisis varius vel sagittis felis. Praesent egestas eget arcu eu imperdiet. Etiam tincidunt gravida ligula non lobortis. Ut erat orci, sodales ut ullamcorper ut, convallis quis justo. Fusce tempus libero tempor ex vulputate hendrerit. Praesent lobortis posuere aliquam.</p>
+      <img src="<%= @superhero.image_url %>" alt="superhero">
+
+      <% if @superhero.reviews.any? %>
+        <hr>
+        <h2>Commentaires</h2>
+        <ul class="list-group">
+          <% @superhero.reviews.each do |review| %>
+            <li class="list-group-item"><%= review.comment %> by <%= review.user.email %></li>
           <% end %>
-          <%= link_to superhero_path(@superhero),
-                      class:"trash-btn",
-                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  do %>
-          <i class="fa-solid fa-trash"  id="delete-ico"></i>
-          <% end %>
-  <% end%>
+        </ul>
+      <% end %>
+      <hr>
 
-
-  <%= simple_form_for [@superhero, @booking] do |f| %>
-    <%= f.input :checkin %>
-    <%= f.input :checkout %>
-    <%= f.button :submit, class: "btn btn-primary" %>
-  <% end %>
-
-  <%= simple_form_for [@superhero, @review] do |f| %>
-  <%= f.input :comment %>
-  <%= f.input :rating %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-  <% end %>
-
+      <h2>Faire un retour sur la préstation de <%= @superhero.name %></h2>
+      <%= simple_form_for [@superhero, @review] do |f| %>
+      <%= f.input :comment %>
+      <%= f.input :rating %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+    <div class="col-4">
+      <div class="booking-area p-4 border rounded">
+        <div class="price border-bottom pb-3"><span>132 €</span> par jour</div>
+        <%= simple_form_for [@superhero, @booking] do |f| %>
+          <%= f.input :checkin,
+             label: "Jour de début de mission",
+             as: :string,
+             input_html: { data: { controller: "datepicker" } } %>
+          <%= f.input :checkout,
+              label: "Jour de fin de mission",
+              as: :string,
+              input_html: { data: { controller: "datepicker" } } %>
+          <p class="text-center">Aucun montant ne vous sera débité pour le moment</p>
+          <%= f.button :submit, class: "btn btn-primary w-100 py-3", label: "Réserver ce super héro" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
 </div>

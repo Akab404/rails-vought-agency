@@ -7,9 +7,13 @@
   height: 100vh;
 }
 
-.haut {
-  padding-bottom: 510px;
+p {
+  font-size: small;
+  color: $secondary;
 }
+// .haut {
+//   padding-bottom: 510px;
+// }
 
 .col-2 {
   padding-left: 0 !important;
@@ -17,6 +21,7 @@
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+  margin-top: 40px;
 }
 
 .navbar-lewagon .navbar-brand img {
@@ -32,3 +37,20 @@
 .nav-link {
   color: $secondary;
 }
+#sidebar-global {
+  height: 100%;
+}
+
+.icone {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width:100%;
+}
+.small-txt{
+      font-size: small;
+}
+.profil-area p{
+  margin:0;
+}
+.logout{color:$red; text-align: center;margin-top: 30px;}
