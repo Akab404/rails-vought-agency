@@ -46,20 +46,21 @@
       <% end %>
     </div>
     <div class="col-4">
-      <div class="booking-area p-4 border rounded">
-        <div class="price border-bottom pb-3"><span>132 €</span> par jour</div>
+      <div class="booking-area p-4 border rounded" data-controller="totalprice">
+        <div class="price border-bottom pb-3"><span data-totalprice-target="price">132</span> € par jour</div>
         <%= simple_form_for [@superhero, @booking] do |f| %>
           <%= f.input :checkin,
              label: "Jour de début de mission",
              as: :string,
-             input_html: { data: { controller: "datepicker" } } %>
+             input_html: { data: { controller: "datepicker", totalprice_target: "checkin", action: "change->totalprice#calcul"} } %>
           <%= f.input :checkout,
               label: "Jour de fin de mission",
               as: :string,
-              input_html: { data: { controller: "datepicker" } } %>
+              input_html: { data: { controller: "datepicker", totalprice_target: "checkout" , action: "change->totalprice#calcul"}  } %>
           <p class="text-center">Aucun montant ne vous sera débité pour le moment</p>
           <%= f.button :submit, class: "btn btn-primary w-100 py-3", label: "Réserver ce super héro" %>
         <% end %>
+        <div class="total-price border-top mt-3 p-1 text-end" data-totalprice-target="totalPrice"></div>
       </div>
     </div>
   </div>
