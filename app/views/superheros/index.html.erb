@@ -1,13 +1,27 @@
 <div class="container">
   <h1 class="fs-1"> Index Superheros</h1>
 
-  <ul class="d-flex list-group flex-row flex-wrap">
+  <ul class="d-flex flex-row flex-wrap">
     <% @superheros.each do |superhero| %>
-      <li class="list-group-item mt-3">
-            <%= link_to superhero_path(superhero) do %>
-              <img src=<%= superhero.image_url %> alt=<%= superhero.name %>>
-              <%= superhero.name %>
-            <% end %>
+      <li class="border rounded mt-3">
+       <%= link_to superhero_path(superhero) do %>
+        <img class="banner_superhero" src=<%= superhero.image_url %> alt=<%= superhero.name %>>
+         <div class="position-relative">
+          <img class="logo_marvel rounded-circle" src="https://tse3.mm.bing.net/th?id=OIP.bxbNzr2ihmPnVrGzBOZiJgHaHa&pid=Api&P=0&h=180" alt="">
+
+           <div class="info_superhero">
+            <h1><%= superhero.name %></h1>
+             <p>pilote accompli / excellent tireur</p>
+
+            <div class= "d-flex">
+              <i class="fa-solid fa-location-pin"></i>
+              <h3>paris</h3>
+            </div>
+
+          </div>
+
+        </div>
+       <% end %>
       </li>
     <% end %>
   </ul>
