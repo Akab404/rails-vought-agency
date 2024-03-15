@@ -32,6 +32,12 @@
       <li>
         From <%= booking.checkin %> to <%= booking.checkout %>
       </li>
+      <% if booking.accepted == nil %>
+        <%= link_to "accept booking", accept_path(booking), data: {turbo_method: :patch}, class:"btn btn-outline-success"%>
+        <%= link_to "decline booking", decline_path(booking), data: {turbo_method: :patch}, class:"btn btn-outline-warning"%>
+      <% else %>
+        <%= link_to "decline booking", decline_path(booking), data: {turbo_method: :patch}, class:"btn btn-outline-warning"%>
+      <% end %>
     <% end %>
   </ul>
 
@@ -46,10 +52,14 @@
         </li>
         <% end  %>
         <% superhero.bookings.each do |booking| %>
+          <% if booking.accepted %>
           <li>
             From <%= booking.checkin %> to <%= booking.checkout %>
             by <%= booking.user.email %>
           </li>
+          <% else %>
+           but it's still pending...
+          <% end %>
         <% end %>
       <% end %>
 

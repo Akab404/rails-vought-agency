@@ -53,9 +53,12 @@
 
           </div>
           <% else %>
-            <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-            </li>
+            <div class="sidebar-menu">
+              <li class="nav-item">
+                <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+              </li>
+              </div>
+            </div>
           <% end %>
         </ul>
 
