@@ -1,67 +1,99 @@
-<div class="container">
-  <h1><%= @user.email %></h1>
+<div class="container mt-5">
+  <h3>Hello, <%= @user.email %></h3>
 
-  <h1>Mes superheros</h1>
-  <%= link_to new_superhero_path,  class:"btn btn-primary mt-3"  do %>
+   <%= link_to new_superhero_path,  class:"btn btn-primary mt-3"  do %>
     <i class="fa-solid fa-plus"></i> Add a new superhero
   <% end %>
-  <ul>
-    <% @user.superheros.each do |superhero| %>
-      <li class="list-group-item mt-3">
-          <%= link_to superhero_path(superhero) do %>
-            <%= superhero.name %>
-          <% end %>
-          <%= link_to edit_superhero_path(superhero) do %>
-            <span class="span-edit">Edit</span>
-          <% end %>
-          <%= link_to superhero_path(superhero),
-                      class:"trash-btn",
-                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  do %>
-          <i class="fa-solid fa-trash"  id="delete-ico"></i>
-          <% end %>
-      </li>
-    <% end %>
-  </ul>
-
-  <h1>Mes bookings de superheros</h1>
-  <ul>
-    <% @user.bookings.each do |booking| %>
-      <li>
-        <%= booking.superhero.name %> is booked
-      </li>
-      <li>
-        From <%= booking.checkin %> to <%= booking.checkout %>
-      </li>
-      <% if booking.accepted == nil %>
-        <%= link_to "accept booking", accept_path(booking), data: {turbo_method: :patch}, class:"btn btn-outline-success"%>
-        <%= link_to "decline booking", decline_path(booking), data: {turbo_method: :patch}, class:"btn btn-outline-warning"%>
-      <% else %>
-        <%= link_to "decline booking", decline_path(booking), data: {turbo_method: :patch}, class:"btn btn-outline-warning"%>
-      <% end %>
-    <% end %>
-  </ul>
 
 
-  <h1>Les bookings de mes superheros</h1>
-  <ul>
+  <h1 class="mt-3">Mes superheros</h1>
 
-      <% @user.superheros.each do |superhero| %>
-        <% if superhero.bookings.any? %>
-        <li>
-          <%= superhero.name %> is booked
+<ul class="d-flex flex-row flex-wrap gap-3">
+    <div class="row justify-content-between">
+     <% @user.superheros.each do |superhero| %>
+        <li class="border rounded sh-card col-2 mx-2 my-4">
+        <%= link_to superhero_path(superhero) do %>
+          <img class="banner_superhero rounded-top" src=<%= superhero.image_url %> alt=<%= superhero.name %>>
+          <div class="position-relative">
+            <img class="logo_marvel rounded-circle" src="https://tse3.mm.bing.net/th?id=OIP.bxbNzr2ihmPnVrGzBOZiJgHaHa&pid=Api&P=0&h=180" alt="">
+
+            <div class="info_superhero">
+              <h1><%= superhero.name %></h1>
+              <p><%= superhero.category %></p>
+
+              <div class= "d-flex align-items-center sh-geoloc">
+                <i class="fa-solid fa-location-pin"></i>
+                <span class="ms-2"><%= superhero.address %></span>
+              </div>
+              <div class="edition-founctions">
+              <%= link_to edit_superhero_path(superhero) do %>
+                  <span class="span-edit btn btn-outline-light mt-3">Edit</span>
+                <% end %>
+                <%= link_to superhero_path(superhero),
+                            class:"trash-btn btn btn-outline-danger mt-3",
+                            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  do %>
+                <i class="fa-solid fa-trash"  id="delete-ico"></i> Supprimer
+                <% end %>
+              </div>
+            </div>
+
+          </div>
+        <% end %>
         </li>
-        <% end  %>
-        <% superhero.bookings.each do |booking| %>
-          <% if booking.accepted %>
+      <% end %>
+    </div>
+  </ul>
+
+  <div class="row">
+    <div class="col-6">
+    <h1 >Mes bookings de superheros</h1>
+    <ul>
+      <% @user.bookings.each do |booking| %>
+        <% if booking.accepted == nil %>
+        <li>
+          <%= booking.superhero.name %> is booked
+        </li>
+        <li>
+          From <%= booking.checkin %> to <%= booking.checkout %>
+        </li>
+          <%= link_to "accept booking", accept_path(booking), data: {turbo_method: :patch}, class:"btn btn-outline-success"%>
+          <%= link_to "decline booking", decline_path(booking), data: {turbo_method: :patch}, class:"btn btn-outline-warning"%>
+        <% elsif booking.accepted %>
           <li>
-            From <%= booking.checkin %> to <%= booking.checkout %>
-            by <%= booking.user.email %>
+          <%= booking.superhero.name %> is booked
           </li>
-          <% else %>
-           but it's still pending...
-          <% end %>
+          <li>
+          From <%= booking.checkin %> to <%= booking.checkout %>
+        </li>
+          <%= link_to "decline booking", decline_path(booking), data: {turbo_method: :patch}, class:"btn btn-outline-warning"%>
         <% end %>
       <% end %>
+      <%  %>
+    </ul>
+    </div>
+    <div class="col-6">
+    <h1>Les bookings de mes superheros</h1>
+    <ul>
 
-  </ul>
+        <% @user.superheros.each do |superhero| %>
+          <% if superhero.bookings.any? %>
+          <li>
+            <%= superhero.name %> is booked
+          </li>
+          <% end  %>
+          <% superhero.bookings.each do |booking| %>
+            <% if booking.accepted %>
+            <li>
+              From <%= booking.checkin %> to <%= booking.checkout %>
+              by <%= booking.user.email %>
+            </li>
+            <% else %>
+            but it's still pending...
+            <% end %>
+          <% end %>
+        <% end %>
+
+    </ul>
+    </div>
+  </div>
 </div>

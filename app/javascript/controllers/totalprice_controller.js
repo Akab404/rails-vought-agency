@@ -3,9 +3,6 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="totalprice"
 export default class extends Controller {
   static targets = ["price", "checkin", "checkout", "totalPrice"]
-  connect() {
-    console.log("coucou ça fonctionne");
-  }
 
   calcul(){
     // 132 => price
@@ -22,10 +19,10 @@ export default class extends Controller {
 
     if (countedMonth == 0) {
       const total = priceInt*(checkoutDay - checkinDay)
-      this.totalPriceTarget.innerHTML = `${total} €`
+      this.totalPriceTarget.innerHTML = `Total prestation : <span class="total-price-value">${total}</span> €`
     } else {
       const total = priceInt*((30*countedMonth)-(checkoutDay- checkinDay))
-      this.totalPriceTarget.innerHTML =  `${total} €`
+      this.totalPriceTarget.innerHTML =  `Total prestation : <span class="total-price-value">${total}</span> €`
     }
   }
 }

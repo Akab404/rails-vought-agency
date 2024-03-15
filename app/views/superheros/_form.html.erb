@@ -1,6 +1,10 @@
 <%= simple_form_for [@superhero] do |f| %>
   <%= f.input :name %>
   <%= f.input :team %>
+  <%= f.input :category, collection:Superhero::CATEGORY %>
+  <%= f.input :booktitle %>
+  <%= f.input :description %>
+  <%= f.input :coverimage %>
   <%= f.input :image_url %>
   <%= f.input :address %>
   <%= f.button :submit, class: "btn btn-primary" %>

@@ -3,7 +3,7 @@
   background-color: #161a23;
   position: fixed;
   border-right: solid $tertiary;
-  border-radius: $border-radius;
+  border-radius: 0 $border-radius $border-radius 0;
   height: 100vh;
 }
 
