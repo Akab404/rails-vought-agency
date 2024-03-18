@@ -1,11 +1,43 @@
 .sh-card{
   background-color: $gray;
     box-shadow: 2px 4px 13px 0px rgba(46, 87, 229, 0.25);
+  opacity: 0;
+  transform: translateY(100px);
+  overflow: hidden;
+}
+.magic-reveal{
+  opacity:1;
+  transform: translateY(0);
+    transition: all 0.8s cubic-bezier(0.59, 0, 0.35, 1);
 
 }
+.sh-card:hover {
+  opacity:0.75;
+  transition: all 0.8s cubic-bezier(0.59, 0, 0.35, 1);
+  transition-delay: 0.8s;
+}
 
-.sh-card:hover .banner_superhero{
-  opacity:0.8;
+.sh-card:hover .reflect-card {
+      opacity: 0;
+      right: 550px;
+        transition: all 0.8s cubic-bezier(0.59, 0, 0.35, 1);
+
+
+}
+.reflect-card{
+  opacity: 0.6;
+  position: absolute;
+    top: 0;
+    right: -30px;
+    width: 1px;
+    height: 550px;
+    border-left: solid 3px #ffffff;
+
+    transform-origin: bottom left;
+    -ms-transform: skew(-30deg, 0deg);
+    -webkit-transform: skew(-30deg, 0deg);
+    transform: skew(-30deg, 0deg);
+
 }
 
 .sh-card a{

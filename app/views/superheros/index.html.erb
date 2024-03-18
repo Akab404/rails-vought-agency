@@ -15,11 +15,12 @@
 <div class="container">
   <div class="btn btn-outline-light px-4 py-2 sh-filtres"><i class="fa-solid fa-sliders"></i> Filtres</div>
 
-  <ul class="d-flex flex-row flex-wrap gap-3">
+  <ul class="d-flex flex-row flex-wrap gap-3" data-controller="fakelazy" data-action="scroll@window->fakelazy#magicreveal">
     <div class="row justify-content-between">
       <% @superheros.each do |superhero| %>
-        <li class="border rounded sh-card col-2 mx-2 my-4">
+        <li class="border rounded sh-card col-2 mx-2 my-4"  data-fakelazy-target="reveal">
         <%= link_to superhero_path(superhero) do %>
+          <div class="reflect-card"></div>
           <img class="banner_superhero rounded-top" src=<%= superhero.image_url %> alt=<%= superhero.name %>>
           <div class="position-relative">
             <img class="logo_marvel rounded-circle" src="https://tse3.mm.bing.net/th?id=OIP.bxbNzr2ihmPnVrGzBOZiJgHaHa&pid=Api&P=0&h=180" alt="">
