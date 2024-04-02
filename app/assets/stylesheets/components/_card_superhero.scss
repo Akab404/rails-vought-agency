@@ -17,28 +17,28 @@
   transition-delay: 0.8s;
 }
 
-.sh-card:hover .reflect-card {
-      opacity: 0;
-      right: 550px;
-        transition: all 0.8s cubic-bezier(0.59, 0, 0.35, 1);
+// .sh-card:hover .reflect-card {
+//       opacity: 0;
+//       right: 550px;
+//         transition: all 0.8s cubic-bezier(0.59, 0, 0.35, 1);
 
 
-}
-.reflect-card{
-  opacity: 0.6;
-  position: absolute;
-    top: 0;
-    right: -30px;
-    width: 1px;
-    height: 550px;
-    border-left: solid 3px #ffffff;
+// }
+// .reflect-card{
+//   opacity: 0.6;
+//   position: absolute;
+//     top: 0;
+//     right: -30px;
+//     width: 1px;
+//     height: 550px;
+//     border-left: solid 3px #ffffff;
 
-    transform-origin: bottom left;
-    -ms-transform: skew(-30deg, 0deg);
-    -webkit-transform: skew(-30deg, 0deg);
-    transform: skew(-30deg, 0deg);
+//     transform-origin: bottom left;
+//     -ms-transform: skew(-30deg, 0deg);
+//     -webkit-transform: skew(-30deg, 0deg);
+//     transform: skew(-30deg, 0deg);
 
-}
+// }
 
 .sh-card a{
   text-decoration: none;
